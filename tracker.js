@@ -175,7 +175,7 @@
           element.addEventListener('keydown',event => {if(event.key==='Enter'||event.key===' '){event.preventDefault();chooseStop(stopIndex);}});
           markers.push({marker,stopIndex});
         });
-        L.marker(destination().position,{icon:L.divIcon({className:'tracking-destination'+(routeKey==='chungchi'?' tracking-destination-left':''),html:`<strong>${destination().mapLabel}</strong><span>推測</span>`,iconSize:[112,56],iconAnchor:routeKey==='chungchi'?[126,28]:[56,28]})}).addTo(routeLayer).on('click',()=>chooseStop(stops().length-1));
+        L.marker(destination().position,{zIndexOffset:1200,icon:L.divIcon({className:'tracking-destination',html:`<strong>${destination().mapLabel}</strong><span>推測</span>`,iconSize:[112,56],iconAnchor:[56,-54]})}).addTo(routeLayer).on('click',()=>chooseStop(stops().length-1));
         cursor = L.marker(positions[0],{
           interactive:false,keyboard:false,zIndexOffset:800,
           icon:L.divIcon({
@@ -193,8 +193,8 @@
                 <text x="0" y="0" text-anchor="middle" fill="#fffdf6" font-family="sans-serif" font-size="15" font-weight="800">廚餘</text>
                 <text x="0" y="9" text-anchor="middle" fill="#fffdf6" font-family="Arial,sans-serif" font-size="5.4" font-weight="700">FOOD WASTE</text>
               </g></g>
-              <g transform="translate(79 52)"><g class="tracking-truck-label">
-                <text x="0" y="8" text-anchor="middle" fill="#fffdf6" font-family="Arial,sans-serif" font-size="36" font-weight="700">6</text>
+              <g transform="translate(64.3 29.4) scale(1.65)"><g class="tracking-truck-label">
+                <path d="M16.226 8.598 L16.227 8.602 L16.226 8.602 C14.97 6.795 13.062 5.476 10.842 4.984 L10.842 4.982 L13.926 0 L6.858 0 L1.296 9.012 C0.465 10.365 0 11.975 0 13.68 C0 18.6 3.989 22.588 8.91 22.588 C13.83 22.588 17.818 18.6 17.818 13.68 C17.818 11.791 17.229 10.039 16.226 8.598Z M8.907 21 C4.864 21 1.587 17.723 1.587 13.68 C1.587 12.334 1.936 11.058 2.57 9.975 L7.767 1.586 L11.07 1.586 L8.081 6.399 C8.081 6.399 9.376 6.372 10.269 6.486 L10.268 6.488 C13.66 7.126 16.227 10.102 16.227 13.68 C16.227 17.723 12.95 21 8.907 21Z M8.9096 9.144 L8.2636 9.144 L9.0796 7.822 L7.2086 7.822 L5.8876 9.937 L6.4266 10.805 L7.2086 12.057 L9.0796 12.057 L8.2636 10.736 L8.9096 10.736 C10.5336 10.738 11.8506 12.055 11.8506 13.68 C11.8506 15.306 10.5326 16.624 8.9066 16.624 C7.2806 16.624 5.9636 15.306 5.9636 13.68 C5.9636 13.418 5.9986 13.164 6.0626 12.922 L5.0516 11.294 C4.6216 11.987 4.3736 12.804 4.3736 13.68 C4.3736 16.185 6.4046 18.215 8.9096 18.215 C11.4146 18.215 13.4456 16.185 13.4456 13.68 C13.4456 11.175 11.4146 9.144 8.9096 9.144Z" fill="#fffdf6" fill-rule="evenodd"/>
               </g></g>
               <path d="M13 21V75M103 21V75" stroke="#c2cdc7" stroke-width="1.5"/>
               <path d="M104 18V77" stroke="#8d9f95" stroke-width="2"/>
