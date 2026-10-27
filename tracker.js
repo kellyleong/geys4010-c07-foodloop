@@ -110,8 +110,7 @@
       const from = movingTo > index ? index : Math.max(0, index - 1);
       const to = movingTo > index ? movingTo : index === 0 ? 1 : index;
       const heading = bearing(stops()[from].position, stops()[to].position);
-      cursorElement.querySelector('svg').style.transform = `rotate(${heading}deg)`;
-      cursorElement.querySelector('.tracking-truck-badge').style.transform = `rotate(${-heading}deg)`;
+      cursorElement.classList.toggle('is-facing-left', heading > 180);
       const completed = observations().slice(0, Math.min(index + 1, observations().length)).map(stop => stop.position);
       travelled.setLatLngs(predicting ? completed : [...completed, position]);
       forecastTravelled.setLatLngs(predicting ? [observations().at(-1).position, position] : []);
@@ -180,37 +179,51 @@
         cursor = L.marker(positions[0],{
           interactive:false,keyboard:false,zIndexOffset:800,
           icon:L.divIcon({
-            className:'tracking-cursor',iconSize:[64,80],iconAnchor:[32,40],
-            html:`<svg viewBox="0 0 72 88" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15 10Q15 4 23 4H49Q57 4 57 10V31H61V82H11V31H15Z" fill="#fffdf2" stroke="#fffdf2" stroke-width="6" stroke-linejoin="round"/>
-              <g fill="#263c37" stroke="#15392f" stroke-width="2">
-                <rect x="6" y="18" width="11" height="19" rx="4"/><rect x="55" y="18" width="11" height="19" rx="4"/>
-                <rect x="6" y="58" width="11" height="20" rx="4"/><rect x="55" y="58" width="11" height="20" rx="4"/>
-              </g>
-              <path d="M9 22V32M63 22V32M9 62V74M63 62V74" stroke="#59756b" stroke-width="2" stroke-linecap="round"/>
-              <rect x="12" y="32" width="48" height="49" rx="7" fill="var(--truck-body)" stroke="#174a3b" stroke-width="2"/>
-              <path d="M18 37H54" stroke="#fffdf2" stroke-opacity=".42" stroke-width="3" stroke-linecap="round"/>
-              <path d="M16 42V70M56 42V70" stroke="#f2d169" stroke-width="3" stroke-linecap="round"/>
-              <path d="M21 42H51" stroke="#123d38" stroke-opacity=".22" stroke-width="2" stroke-linecap="round"/>
-              <g transform="translate(36 57)"><g class="tracking-truck-badge">
-                <circle r="11.5" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
-                <text x="0" y="7" text-anchor="middle" fill="#174a3b" font-family="Arial,sans-serif" font-size="21" font-weight="800">6</text>
+            className:'tracking-cursor',iconSize:[112,77],iconAnchor:[56,39],
+            html:`<svg viewBox="0 0 160 110" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 15H105V28H129Q140 28 144 40L153 63V85H143Q141 97 129 97T115 85H55Q53 97 40 97T25 85H6V26Q6 15 10 15Z" fill="var(--truck-halo)" stroke="var(--truck-halo)" stroke-width="7" stroke-linejoin="round"/>
+              <ellipse cx="80" cy="98" rx="70" ry="5" fill="#123d38" opacity=".15"/>
+              <path d="M13 16 98 11 108 18 22 23Z" fill="#e8eee8" stroke="#314c46" stroke-width="2" stroke-linejoin="round"/>
+              <rect x="10" y="19" width="96" height="59" rx="3" fill="#fffdf6" stroke="#314c46" stroke-width="2"/>
+              <path d="M16 24H55V59H16Z" fill="#66449a"/>
+              <path d="M57 24H100V72H57Z" fill="#287b68"/>
+              <path d="M16 61H55V72H16Z" fill="#658f77"/>
+              <path d="M21 65H49M21 69H43" stroke="#e6f1df" stroke-width="1.3" stroke-linecap="round"/>
+              <g transform="translate(35.5 42)"><g class="tracking-truck-label">
+                <text x="0" y="0" text-anchor="middle" fill="#fffdf6" font-family="sans-serif" font-size="15" font-weight="800">廚餘</text>
+                <text x="0" y="9" text-anchor="middle" fill="#fffdf6" font-family="Arial,sans-serif" font-size="5.4" font-weight="700">FOOD WASTE</text>
               </g></g>
-              <text x="36" y="76" text-anchor="middle" fill="#fffdf2" font-family="sans-serif" font-size="8" font-weight="700" letter-spacing="1">廚餘回收</text>
-              <path d="M16 81H56" stroke="#174a3b" stroke-width="4" stroke-linecap="round"/>
-              <path d="M18 81L22 77M28 81L32 77M38 81L42 77M48 81L52 77" stroke="#f2d169" stroke-width="2.5"/>
-              <path d="M14 83H21M51 83H58" stroke="#df6b50" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M15 18H9M57 18H63" stroke="#174a3b" stroke-width="2.5"/>
-              <rect x="5" y="13" width="5" height="9" rx="2" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
-              <rect x="62" y="13" width="5" height="9" rx="2" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
-              <path d="M16 12Q16 5 23 5H49Q56 5 56 12V30Q56 35 50 35H22Q16 35 16 30Z" fill="#fffdf2" stroke="#174a3b" stroke-width="2"/>
-              <path d="M21 14Q36 10 51 14L48 26H24Z" fill="#72b9c8" stroke="#174a3b" stroke-width="1.7" stroke-linejoin="round"/>
-              <path d="M26 15L23 21M33 14L29 24" stroke="#d5f1ee" stroke-width="2.5" stroke-linecap="round"/>
-              <path d="M25 26L31 24M41 24L47 26" stroke="#174a3b" stroke-width="1.4" stroke-linecap="round"/>
-              <path d="M22 9H27M45 9H50" stroke="#f2d169" stroke-width="3.5" stroke-linecap="round"/>
-              <path d="M30 8H42" stroke="#b6c9bd" stroke-width="2" stroke-linecap="round"/>
-              <rect x="28" y="29" width="16" height="5" rx="2" fill="#f4b348" stroke="#bb842d" stroke-width="1"/>
-              <path d="M33 30V33M39 30V33" stroke="#ffe7ac" stroke-width="1.2"/>
+              <g transform="translate(79 52)"><g class="tracking-truck-label">
+                <text x="0" y="8" text-anchor="middle" fill="#fffdf6" font-family="Arial,sans-serif" font-size="36" font-weight="700">6</text>
+              </g></g>
+              <path d="M13 21V75M103 21V75" stroke="#c2cdc7" stroke-width="1.5"/>
+              <path d="M104 18V77" stroke="#8d9f95" stroke-width="2"/>
+              <path d="M14 78H140V87H14Z" fill="#29433c" stroke="#243d36" stroke-width="2"/>
+              <path d="M62 82H92V90H62Z" fill="#445a50" stroke="#243d36" stroke-width="1.5"/>
+              <path d="M6 29V81H12V29Z" fill="#768a7d" stroke="#314c46" stroke-width="2"/>
+              <path d="M3 82H23" stroke="#b9c7be" stroke-width="4" stroke-linecap="round"/>
+              <path d="M7 75H13M7 80H13" stroke="#d8b75b" stroke-width="2"/>
+              <path d="M109 38V29Q109 26 114 26H128Q136 26 139 34L149 58Q152 62 152 69V82H142Q140 68 129 68T115 82H107V43Z" fill="#fffdf6" stroke="#314c46" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M113 34H128Q132 34 134 39L140 53H113Z" fill="#8fc7d1" stroke="#314c46" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M136 35 145 55 150 60 142 58 131 35Z" fill="#5b9eae" stroke="#314c46" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M118 37 115 47M124 37 120 50" stroke="#dbf4f0" stroke-width="2" stroke-linecap="round"/>
+              <path d="M113 57H126M112 58V70" stroke="#c0cdc4" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="114" y="58" width="6" height="2.3" rx="1" fill="#314c46"/>
+              <path d="M143 51H151V44" fill="none" stroke="#314c46" stroke-width="2" stroke-linecap="round"/>
+              <rect x="149" y="38" width="5" height="10" rx="2" fill="#526b61" stroke="#314c46" stroke-width="1.5"/>
+              <path d="M145 64H151V70H145Z" fill="#f3d985" stroke="#819486" stroke-width="1.2"/>
+              <path d="M146 73H152V78H145Z" fill="#344c43"/>
+              <path d="M143 82H155" stroke="#e7ede4" stroke-width="5" stroke-linecap="round"/>
+              <rect x="145" y="80" width="7" height="3" rx=".7" fill="#d7bd68"/>
+              <path d="M108 65H115" stroke="#ddaa49" stroke-width="2.5" stroke-linecap="round"/>
+              <g fill="#283d37" stroke="#183a30" stroke-width="2">
+                <circle cx="40" cy="84" r="12"/><circle cx="129" cy="84" r="12"/>
+              </g>
+              <g fill="#c3d0c5" stroke="#70877a" stroke-width="1.5">
+                <circle cx="40" cy="84" r="6.6"/><circle cx="129" cy="84" r="6.6"/>
+              </g>
+              <g fill="#526b5e"><circle cx="40" cy="84" r="2.5"/><circle cx="129" cy="84" r="2.5"/></g>
+              <path d="M34 84H46M40 78V90M123 84H135M129 78V90" stroke="#e8efe4" stroke-width="1.2"/>
             </svg>`
           })
         }).addTo(routeLayer);
