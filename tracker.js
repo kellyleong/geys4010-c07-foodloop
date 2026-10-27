@@ -50,7 +50,7 @@
       <div id="tracking-panel" role="tabpanel" aria-labelledby="tracking-shho">
         <div class="tracking-toolbar"><div><h3 class="tracking-route-name"></h3><p class="tracking-route-summary"></p></div><div class="tracking-actions"><button type="button" class="tracking-overview" aria-pressed="false">查看完整去向</button><button type="button" class="button tracking-play">播放移動方向</button></div></div>
         <div class="tracking-stage"><div><span>從</span><strong class="tracking-from"></strong></div><span class="tracking-direction" aria-label="移動方向"></span><div><span class="tracking-stage-kind">定位方向</span><strong class="tracking-to"></strong></div></div>
-        <div class="tracking-map-side"><div id="tracking-map" aria-label="追蹤器移動方向與預測終點地圖"></div><div class="tracking-map-legend"><span><i class="tracking-observed-line"></i>定位方向</span><span><i class="tracking-predicted-line"></i>預測方向</span><p>箭頭沿紀錄先後移動；線條顯示方向，並非實際行車道路。</p></div></div>
+        <div class="tracking-map-side"><div id="tracking-map" aria-label="追蹤器移動方向與預測終點地圖"></div><div class="tracking-map-legend"><span><i class="tracking-observed-line"></i>定位方向</span><span><i class="tracking-predicted-line"></i>預測方向</span><p>回收車沿紀錄先後移動；線條顯示方向，並非實際行車道路。</p></div></div>
         <div class="tracking-playhead"><button type="button" class="tracking-previous" aria-label="上一個位置">上一站</button><label for="tracking-position">目前位置 <output id="tracking-count"></output></label><button type="button" class="tracking-next" aria-label="下一個位置">下一站</button><input id="tracking-position" type="range" min="0" value="0" step="1" aria-label="選擇位置或預測終點"></div>
         <ol class="tracking-stops" aria-label="移動位置與預測終點"></ol>
         <div class="tracking-current"><h4></h4><p></p></div>
@@ -175,7 +175,33 @@
           markers.push({marker,stopIndex});
         });
         L.marker(destination().position,{icon:L.divIcon({className:'tracking-destination'+(routeKey==='chungchi'?' tracking-destination-left':''),html:`<strong>${destination().mapLabel}</strong><span>推測</span>`,iconSize:[112,56],iconAnchor:routeKey==='chungchi'?[126,28]:[56,28]})}).addTo(routeLayer).on('click',()=>chooseStop(stops().length-1));
-        cursor = L.marker(positions[0],{interactive:false,keyboard:false,zIndexOffset:800,icon:L.divIcon({className:'tracking-cursor',html:'<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 34 34 20 27 6 34Z"/></svg>',iconSize:[40,40],iconAnchor:[20,20]})}).addTo(routeLayer);
+        cursor = L.marker(positions[0],{
+          interactive:false,keyboard:false,zIndexOffset:800,
+          icon:L.divIcon({
+            className:'tracking-cursor',iconSize:[58,72],iconAnchor:[29,36],
+            html:`<svg viewBox="0 0 58 72" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11 8Q11 2 18 2H40Q47 2 47 8V26H50V67H8V26H11Z" fill="#fffdf2" stroke="#fffdf2" stroke-width="5" stroke-linejoin="round"/>
+              <g fill="#263c37" stroke="#152f29" stroke-width="1.5">
+                <rect x="5" y="13" width="8" height="14" rx="3"/><rect x="45" y="13" width="8" height="14" rx="3"/>
+                <rect x="5" y="48" width="8" height="15" rx="3"/><rect x="45" y="48" width="8" height="15" rx="3"/>
+              </g>
+              <rect x="10" y="28" width="38" height="37" rx="5" fill="var(--truck-body)" stroke="#174a3b" stroke-width="2"/>
+              <path d="M15 33H43M15 60H43" stroke="#f5d264" stroke-width="3" stroke-linecap="round"/>
+              <path d="M18 38H40M18 56H40" stroke="#fffdf2" stroke-opacity=".3" stroke-width="1.5"/>
+              <path d="M29 48C22 48 21 41 29 39C37 41 36 48 29 48Z" fill="#e4f4c9"/>
+              <path d="M29 48V42M29 46L32 43" fill="none" stroke="#277958" stroke-width="1.3" stroke-linecap="round"/>
+              <text x="29" y="56" text-anchor="middle" fill="#fffdf2" font-family="sans-serif" font-size="8" font-weight="700">廚餘</text>
+              <rect x="12" y="4" width="34" height="25" rx="7" fill="#fffdf2" stroke="#174a3b" stroke-width="2"/>
+              <path d="M17 12Q29 8 41 12L39 21H19Z" fill="#8bc8d2" stroke="#174a3b" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M21 13L19 18M26 12L23 20" stroke="#e2f6f5" stroke-width="2" stroke-linecap="round"/>
+              <rect x="24" y="23" width="10" height="4" rx="1.5" fill="#efaa3a" stroke="#a87124" stroke-width="1"/>
+              <path d="M17 7H21M37 7H41" stroke="#f1d365" stroke-width="3" stroke-linecap="round"/>
+              <path d="M19 65H39" stroke="#174a3b" stroke-width="3" stroke-linecap="round"/>
+              <path d="M14 65L18 61M23 65L27 61M32 65L36 61M41 65L45 61" stroke="#f5d264" stroke-width="2"/>
+              <path d="M12 67H18M40 67H46" stroke="#db6650" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>`
+          })
+        }).addTo(routeLayer);
       }
       fitRoute(); renderStep(); paintMap();
       if (hasStarted && visible && !preference.matches) startPlayback();
