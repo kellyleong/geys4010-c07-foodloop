@@ -1,0 +1,26 @@
+/* Motion follows the reading order; content remains visible before JS starts. */
+.motion-reading-progress{position:fixed;inset:0 auto auto 0;width:100%;height:4px;z-index:2500;pointer-events:none;background:var(--teal,#00695f);transform:scaleX(0);transform-origin:left center;will-change:transform}
+html.motion-ready .motion-enter{transition:opacity .72s cubic-bezier(.22,.7,.2,1),transform .72s cubic-bezier(.22,.7,.2,1);transition-delay:var(--motion-delay,0ms)}
+html.motion-ready .motion-enter:not(.is-visible){opacity:0;transform:translateY(34px)}
+html.motion-ready .motion-enter.is-visible{opacity:1;transform:translateY(0)}
+html.motion-ready .motion-image{transition:clip-path .95s cubic-bezier(.22,.7,.2,1),scale 1.05s cubic-bezier(.22,.7,.2,1),opacity .7s ease;transition-delay:var(--motion-delay,0ms);transform-origin:center}
+html.motion-ready .motion-image:not(.is-visible){clip-path:inset(7% 0 0 0);scale:1.035;opacity:.3}
+html.motion-ready .motion-image.is-visible{clip-path:inset(0);scale:1;opacity:1}
+html.motion-ready:not(.motion-reduced) .hero-photo img{translate:0 var(--motion-hero-y,0px);scale:1.1;will-change:translate}
+html.motion-ready .button,html.motion-ready .menu-button,html.motion-ready .text-button,html.motion-ready .survey-tabs button,html.motion-ready .process-tabs button{transition:background-color .2s ease,color .2s ease,transform .2s ease,filter .2s ease}
+html.motion-ready .button:is(:hover,:focus-visible){transform:translateY(-3px);background:var(--ink);color:var(--paper)}
+html.motion-ready .button:active,html.motion-ready .menu-button:active,html.motion-ready .text-button:active,html.motion-ready .survey-tabs button:active,html.motion-ready .process-tabs button:active{transform:translateY(1px)}
+html.motion-ready .resource-branches a{transition:background-color .25s ease,color .25s ease,transform .25s ease}
+html.motion-ready .resource-branches a:is(:hover,:focus-visible){transform:translateY(-5px)}
+html.motion-ready .interview-list summary,html.motion-ready .source-note summary{transition:color .2s ease,padding-left .2s ease}
+html.motion-ready .interview-list summary:is(:hover,:focus-visible),html.motion-ready .source-note summary:is(:hover,:focus-visible){padding-left:8px;color:var(--teal)}
+html.motion-ready .interview-list summary::after{transition:transform .25s ease}
+html.motion-ready .interview-list summary:is(:hover,:focus-visible)::after{transform:rotate(90deg)}
+html.motion-ready .motion-detail[open]>:not(summary){animation:motion-detail-in .28s ease both}
+@keyframes motion-detail-in{from{opacity:.3;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+html.motion-reduced .motion-enter,html.motion-reduced .motion-image{opacity:1!important;transform:none!important;clip-path:none!important;scale:1!important;transition:none!important}
+html.motion-reduced .hero-photo img{translate:none!important;scale:1!important;will-change:auto!important}
+html.motion-reduced .motion-detail[open]>:not(summary){animation:none!important}
+html.motion-reduced .button,html.motion-reduced .menu-button,html.motion-reduced .text-button,html.motion-reduced .survey-tabs button,html.motion-reduced .process-tabs button,html.motion-reduced .resource-branches a,html.motion-reduced .interview-list summary,html.motion-reduced .source-note summary{transition:none!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){.motion-enter,.motion-image{opacity:1!important;transform:none!important;clip-path:none!important;scale:1!important;transition:none!important}.hero-photo img{translate:none!important;scale:1!important}.motion-reading-progress{will-change:auto}.motion-detail[open]>:not(summary){animation:none!important}}
+@media print{.motion-reading-progress{display:none}.motion-enter,.motion-image{opacity:1!important;transform:none!important;clip-path:none!important;scale:1!important}}

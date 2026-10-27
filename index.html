@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hant-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123d38">
+  <meta name="description" content="食得「伍」浪費：從中大校園出發，探索廚餘回收、O·PARK轉廢為能、智能廚餘桶地圖與回收小遊戲。">
+  <title>食得「伍」浪費｜廚餘的下一站</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="tracker.css">
+  <link rel="stylesheet" href="motion.css">
+  <script src="assets/leaflet.js" defer></script>
+  <script src="bin-map.js" defer></script>
+  <script src="game.js" defer></script>
+  <script src="tracker.js" defer></script>
+  <script src="motion.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="site-header">
+  <a href="#top" class="brand" aria-label="食得伍浪費，回到首頁"><img src="assets/mark.svg" width="34" height="34" alt="">食得「伍」浪費</a>
+  <nav aria-label="主要導覽"><a href="#campus">校園調查</a><a href="#journey">轉化旅程</a><a href="#tracker">追蹤實驗</a><a href="#locations">回收地圖</a></nav>
+  <button class="menu-button" aria-expanded="false" aria-controls="chapter-menu">全部章節 <span aria-hidden="true">＋</span></button>
+</header>
+<nav id="chapter-menu" class="chapter-menu" aria-label="全部章節" hidden>
+  <a href="#campus">中大現況與問卷</a><a href="#opark">認識 O·PARK</a><a href="#journey">廚餘轉化過程</a><a href="#compost">堆肥與土壤</a><a href="#electricity">生物氣發電</a><a href="#tracker">藍牙追蹤實驗</a><a href="#world">外國經驗</a><a href="#locations">智能廚餘桶地圖</a><a href="#how-to">廚餘桶使用方法</a><a href="#play">廚餘運送小遊戲</a>
+</nav>
+<main id="main">
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="hero-photo"><img src="assets/biogas-plant.jpg" alt="O·PARK1 生物氣處理設施，前方展示發電與熱能回收流程" width="2048" height="1536" fetchpriority="high"><span class="photo-caption">O·PARK1 · 實地參觀</span></div>
+  <div class="hero-copy frame">
+    <div class="hero-deck"><p>一份中大校園廚餘研究。<br>從餐盤出發，看見回收之後的事。</p><a class="button" href="#campus">開始這趟旅程 <span aria-hidden="true">↘</span></a></div>
+    <h1 id="hero-title"><span>廚餘的</span><span>下一站</span></h1>
+  </div>
+</section>
+<div class="chapter-links frame" aria-label="快速跳轉"><p>從理解到行動</p><a href="#opark">認識處理設施</a><a href="#locations">找附近的回收桶</a><a href="#play">挑戰廚餘運送</a></div>
+
+<section id="campus" class="section frame" aria-labelledby="campus-title">
+  <div class="section-heading"><div class="side-note"><p>香港中文大學<br>學生問卷與前線訪問</p><p>2026.09.20—10.06<br>問卷樣本 n = 61</p></div><div><h2 id="campus-title">願意回收，<br>為何還沒行動？</h2><p class="lead">從「我願意」到「我有做」，中間還有一段距離。我們訪問校園餐飲場所，亦向學生了解回收習慣。</p></div></div>
+  <div class="survey-contrast"><div><strong>70.5<span>%</span></strong><p>願意主動分類及回收</p><small>43／61 人，同意或非常同意</small></div><div><strong>9.8<span>%</span></strong><p>經常或幾乎每次回收</p><small>6／61 人，包含不適用者的全樣本比例</small></div></div>
+  <div class="survey-detail" data-ui>
+    <div class="survey-tabs" role="tablist" aria-label="問卷圖表"><button role="tab" id="survey-awareness" aria-selected="true" aria-controls="survey-panel" data-survey="awareness">廚餘去了哪裡</button><button role="tab" aria-selected="false" id="survey-frequency" aria-controls="survey-panel" data-survey="frequency" tabindex="-1">實際回收頻率</button><button role="tab" aria-selected="false" id="survey-improvements" aria-controls="survey-panel" data-survey="improvements" tabindex="-1">如何促進參與</button></div>
+    <div id="survey-panel" role="tabpanel" aria-labelledby="survey-awareness" tabindex="0"></div>
+  </div>
+  <details class="source-note"><summary>問卷定義與樣本限制</summary><p>來源：我們的《食得「伍」浪費中期研究報告》，依報告內圖表及文字整理。收集期為2026年9月20日至10月6日，共61人。樣本包括53名本科生及8名研究生，43人為四年級或以上，只有13名宿生，15人每週沒有在校園用餐。結果反映本組受訪者情況，不宜推論全體中大學生；本次未附原始CSV。</p><p>「願意回收」為Q11的同意與非常同意合計；「經常回收」為Q12的經常與每次／幾乎每次合計，分母61人，包括9名不適用／沒有使用機會者。圖表四捨五入後的總和可能略有差異。改善措施為複選。</p></details>
+  <div class="interview-layout"><div><h3>回收現場的聲音</h3><p>五間場所、六名受訪者的經驗，讓回收流程中的人被看見。以下是訪問節錄與摘要，並非全校設施審計。</p><blockquote>「大家行多步啫嘛。」<cite>中大大膳堂餐廳經理 · 訪問節錄</cite></blockquote></div><div id="interview-list" class="interview-list"></div></div>
+</section>
+
+<section id="opark" class="opark-section" aria-labelledby="opark-title">
+  <div class="opark-photo"><img src="assets/opark-model.jpg" loading="lazy" width="1536" height="2048" alt="O·PARK1 展示模型中的處理廠房、管道和厭氧消化缸"></div>
+  <div class="opark-copy"><h2 id="opark-title">認識 O·PARK1</h2><p class="lead">位於北大嶼山小蠔灣的有機資源回收中心，讓已分類的廚餘，走進另一個循環。</p><p>O·PARK1 是香港首個有機資源回收中心。廚餘在這裡經過厭氧消化，產生可用於發電的生物氣；消化後的殘渣則可製成堆肥。</p><div class="large-fact"><strong>200</strong><p>公噸／日<br>設計廚餘處理量</p></div><a class="text-link" href="https://www.opark.gov.hk/tc/index.php" target="_blank" rel="noreferrer">閱讀 O·PARK1 官方簡介</a></div>
+</section>
+
+<section id="journey" class="section frame journey" aria-labelledby="journey-title">
+  <div class="section-heading"><div class="side-note"><p>同一份廚餘<br>兩條資源路徑</p></div><div><h2 id="journey-title">廚餘如何轉化？</h2><p class="lead">先接收、去雜質，再交給微生物。選擇一個環節，看看廚餘正在經歷甚麼。</p></div></div>
+  <div class="process-interactive" data-ui><div class="process-tabs" role="tablist" aria-label="廚餘處理環節"><button id="process-receive" role="tab" data-process="receive" aria-selected="true" aria-controls="process-panel">廚餘接收</button><button id="process-prepare" role="tab" data-process="prepare" aria-selected="false" aria-controls="process-panel" tabindex="-1">預處理</button><button id="process-digest" role="tab" data-process="digest" aria-selected="false" aria-controls="process-panel" tabindex="-1">厭氧消化</button><button id="process-resources" role="tab" data-process="resources" aria-selected="false" aria-controls="process-panel" tabindex="-1">資源再生</button></div><div id="process-panel" role="tabpanel" aria-labelledby="process-receive" tabindex="0"></div></div>
+  <div class="resource-branches"><a href="#compost"><span>消化殘渣</span><strong>回到土壤</strong><span>脫水後堆肥，改善土壤</span></a><a href="#electricity"><span>生物氣</span><strong>成為電力</strong><span>淨化後發電，同時回收熱能</span></a></div>
+  <p class="small source">資料：<a href="https://www.opark.gov.hk/tc/process.php" target="_blank" rel="noreferrer">O·PARK1 設計流程</a>。溫度、日數及處理量為官方流程／設計資料。</p>
+</section>
+
+<section id="compost" class="compost-section" aria-labelledby="compost-title">
+  <div class="frame compost-heading"><h2 id="compost-title">堆肥，讓土壤再生</h2><p class="lead">廚餘的旅程，可以在另一株蔬菜上繼續。</p></div>
+  <div class="compost-layout frame"><figure><img src="assets/ofarm.jpg" loading="lazy" width="1536" height="2048" alt="O·FARM 現場介紹牌，說明利用 O·COMPOST 實踐再生農法"><figcaption>實地參觀照片：O·FARM 介紹牌</figcaption></figure><div><div class="compost-fact"><strong>55°C</strong><p>隧道堆肥溫度約數</p></div><p>消化殘渣經脫水後，送到堆肥隧道，在約55°C的環境處理約20日。製成的堆肥含有機物與植物養分，可應用於園林綠化和農業。</p><h3>在 O·FARM 看見循環</h3><p>現場介紹牌記載，O·FARM 於2022年12月起運作，位於堆肥隧道天台，種植面積約350平方米，以自家生產的 O·COMPOST 改善土壤有機質，並透過社區及教育活動分享農產。</p><div class="soil-mix"><span>1 份堆肥</span><span aria-hidden="true">＋</span><span>至少 5 份泥土</span></div><p class="small">這是 O·PARK1 產品作基肥的官方混土建議，須按土壤情況調整。</p><a class="text-link" href="https://www.opark.gov.hk/tc/compost.php" target="_blank" rel="noreferrer">查看官方堆肥使用說明</a></div></div>
+</section>
+
+<section id="electricity" class="section frame" aria-labelledby="electricity-title">
+  <div class="section-heading"><div class="side-note"><p>由微生物開始<br>把能量接回電網</p></div><div><h2 id="electricity-title">生物氣，點亮下一站</h2><p class="lead">廚餘在無氧環境中分解，產生生物氣。經除硫淨化後，生物氣進入熱電聯產系統。</p></div></div>
+  <div class="energy-layout"><div><div class="energy-path"><span>厭氧消化</span><b aria-hidden="true">↓</b><span>生物氣除硫與淨化</span><b aria-hidden="true">↓</b><span>熱電聯產</span></div><p>產生的電力先供中心運作，剩餘電力輸出電網；系統的熱能亦供其他設施使用。</p><div class="energy-estimate"><strong>1,400 萬度</strong><p>官方預計每年可輸出的剩餘電力<br>約相當於3,000個家庭用電量</p></div><p class="small">以上是設計／預計比較，並非最新實測年產量。<a href="https://www.opark.gov.hk/tc/process.php" target="_blank" rel="noreferrer">來源：O·PARK1</a></p></div><figure class="board-figure"><img src="assets/results-board.jpg" loading="lazy" width="1536" height="2048" alt="O·PARK1 現場累計看板，日期為2026年9月"><figcaption>現場看板紀錄 · 2026年9月</figcaption></figure></div>
+  <div class="record-strip"><p>照片中的累計成果<br><span>截至看板所標示的2026年9月</span></p><div><strong>&gt;37.1 萬</strong><span>公噸廚餘收集量</span></div><div><strong>&gt;8,100 萬</strong><span>kWh 產電量</span></div><div><strong>&gt;1.75 萬</strong><span>公噸堆肥產量</span></div></div>
+  <p class="small source">以上三項為專題提供照片的累計看板紀錄，並非即時數據或年產量；產電單位依照片英文 kWh 表示。</p>
+</section>
+
+<section id="tracker" class="tracker-section" aria-labelledby="tracker-title">
+  <div class="frame">
+    <div class="section-heading"><div class="side-note"><p>兩個回收桶<br>兩段定位紀錄</p></div><div><h2 id="tracker-title">離開校園後，去哪裡？</h2><p class="lead">我們把兩個藍牙追蹤器，分別放在善衡書院飯堂和崇基書院的廚餘回收桶，跟隨收運後留下的定位紀錄。</p></div></div>
+    <div class="tracking-summary"><p><strong>善衡書院飯堂出發</strong><br>校園、坪輋，再到粉嶺業豐街。</p><p><strong>崇基書院回收桶出發</strong><br>九肚山、小瀝源及大水坑一帶。</p></div>
+    <div id="tracker-explorer" data-ui><p>正在載入兩組定位紀錄。</p></div>
+    <noscript><p>善衡書院飯堂的定位方向為校園、坪輋、粉嶺；崇基書院的定位方向為九肚山、小瀝源、大水坑一帶。善衡的推測終點為沙嶺 O·PARK2；崇基的推測終點為沙田污水處理廠的廚餘處理設施。兩者均依零散定位及設施位置推測，尚待收運紀錄確認。</p></noscript>
+    <div class="tracking-notes"><p><strong>綠色路段，看移動方向</strong><br>沿已記錄的位置播放方向箭頭。點位按提供資料概略標示，動畫連線表示觀察次序，並非實際行車道路。</p><p><strong>黃色虛線，看預測去向</strong><br>最後觀察點之後的黃色路段，延伸至我們推測的處理設施。預測根據零散定位及設施位置，尚待收運紀錄確認。若追蹤器附在可重用桶上，卸料後亦可能與廚餘分開。</p></div>
+  </div>
+</section>
+
+<section id="world" class="section frame" aria-labelledby="world-title">
+  <div class="section-heading"><div class="side-note"><p>把視野移向海外</p></div><div><h2 id="world-title">別的地方，怎樣做？</h2><p class="lead">從秤重記錄、源頭分類到餐桌習慣，不同做法為校園帶來不同啟示。</p></div></div>
+  <div class="world-list"><article><h3>韓國</h3><div><h4>讓每次棄置都有重量紀錄</h4><p>韓國環境公團的 RFID 系統識別使用者、量度廚餘重量並記錄時間，支援按棄置量收費及減量統計。</p><p class="takeaway">校園啟示：讓回收重量成為使用者看得到的回饋。</p><a href="https://www.keco.or.kr/web/lay1/S1T184C1061/contents.do" target="_blank" rel="noreferrer">來源：韓國環境公團</a></div></article><article><h3>新加坡</h3><div><h4>在產生廚餘的地方分類</h4><p>新加坡國家環境局把預防浪費、分配剩餘食物、資源化處理與能源回收列為策略，強調先將食物與非食物物料分開。</p><p class="takeaway">校園啟示：讓回收設施與餐盤回收動線一起設計。</p><a href="https://www.nea.gov.sg/our-services/waste-management/3r-programmes-and-resources/food-waste-management/food-waste-management-strategies" target="_blank" rel="noreferrer">來源：新加坡國家環境局</a></div></article><article><h3>日本</h3><div><h4>在聚餐中留一段惜食時間</h4><p>「3010運動」鼓勵宴會開始後首30分鐘專心用餐，結束前10分鐘再提醒大家吃完食物，減少剩食。</p><p class="takeaway">校園啟示：在書院聚餐加入份量選擇與惜食提醒。</p><a href="https://www.no-foodloss.caa.go.jp/eating-out.html" target="_blank" rel="noreferrer">來源：日本消費者廳</a></div></article></div><p class="small source">「校園啟示」為本專題的延伸思考，並非上述地區已在中大實施的制度。</p>
+</section>
+
+<section id="locations" class="locations-section" aria-labelledby="locations-title"><div class="frame"><div class="location-heading"><div><h2 id="locations-title">找到廚餘的下一站</h2><p class="lead">搜尋屋邨、屋苑或樓宇，查看智能廚餘桶的位置。</p></div><p>公共屋邨／屋苑名單<br>資料截至2026年9月30日</p></div><div id="bin-map" data-ui><p>正在載入221個屋邨／屋苑條目。</p><a href="data/bin-locations.json" download>回收位置資料（JSON）</a></div><noscript><p>請啟用JavaScript使用互動地圖，或<a href="data/bin-locations.json" download>回收位置資料（JSON）</a>。</p></noscript><p class="small source">名單每列代表一個屋邨／屋苑，並非一個回收桶；實際開放安排以現場及官方資料為準。</p></div></section>
+
+<section id="how-to" class="section frame" aria-labelledby="howto-title"><div class="section-heading"><div class="side-note"><p>把一餐之後的事<br>變成順手的事</p></div><div><h2 id="howto-title">廚餘桶，這樣用</h2><p class="lead">先看機身指示，再按設施要求操作。不同機型的開蓋及記錄方式可能不同。</p></div></div><ol class="howto-list"><li><h3>分開，瀝乾</h3><p>把食物與膠袋、包裝、紙巾及餐具分開，瀝走多餘水分，以可重用容器盛載。</p></li><li><h3>掃碼開蓋</h3><p>依桶身指示掃描「綠綠賞」手機或積分卡的會員二維碼，開啟投放口。</p></li><li><h3>只投入廚餘</h3><p>投入可接收的食物，帶走容器和膠袋；過硬、過大的骨頭或殼不要放入。</p></li><li><h3>確認完成</h3><p>待桶蓋關閉並完成記錄，保持投放位置整潔。以現場指示為準。</p></li></ol><div class="sorting-guide"><div><h3>可以先分類</h3><p>剩飯、麵、蔬果、肉類及其他可接收食物。生熟食物均可能屬可回收廚餘，按機身標示分類。</p></div><div><h3>記得帶走</h3><p>膠袋、餐盒、紙巾、餐具及包裝。不要把容器連同廚餘一起倒入。</p></div></div><p class="small source">參考：<a href="https://www.news.gov.hk/chi/2023/07/20230707/20230707_145204_382.html" target="_blank" rel="noreferrer">政府新聞網「智回收 惜廚餘」</a>及<a href="https://www.wastereduction.gov.hk/zh-hk/pilot-programme-smart-recycling-systems" target="_blank" rel="noreferrer">香港減廢網站智能回收系統</a>。接收種類與積分安排以現行機身說明為準。</p></section>
+
+<section id="play" class="play-section" aria-labelledby="play-title"><div class="frame"><div class="section-heading"><div class="side-note"><p>把理解變成一次行動</p></div><div><h2 id="play-title">廚餘運送挑戰</h2><p class="lead">駕駛小車，收集食物殘渣並送到回收站。繞過包裝垃圾，完成五份廚餘的回收旅程。</p></div></div><div id="food-game" data-ui><p>遊戲載入中。啟用JavaScript後即可使用方向鍵或畫面按鈕遊玩。</p></div></div></section>
+</main>
+<footer class="site-footer frame"><p class="footer-title">食得「伍」浪費</p><div class="footer-details"><p>從餐盤出發。<br>看見廚餘的下一站。</p><div><h2>資料與製作</h2><p>中大校園研究：我們的中期研究報告<br>設施資料：O·PARK1 官方網站<br>位置名單：2026年9月30日公共屋邨／屋苑資料<br>四張實地考察照片</p></div><div><a href="https://www.opark.gov.hk/tc/process.php" target="_blank" rel="noreferrer">O·PARK1 官方流程</a><a href="data/bin-locations.json" download>回收位置資料（JSON）</a><a href="#top">回到頁首 ↑</a></div></div><p class="small">GEYS4010 C07 · 資料整理於2026年10月</p></footer>
+</body></html>
