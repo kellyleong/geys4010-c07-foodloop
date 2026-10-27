@@ -109,7 +109,9 @@
       cursorElement.classList.toggle('is-predicted', predicting);
       const from = movingTo > index ? index : Math.max(0, index - 1);
       const to = movingTo > index ? movingTo : index === 0 ? 1 : index;
-      cursorElement.querySelector('svg').style.transform = `rotate(${bearing(stops()[from].position, stops()[to].position)}deg)`;
+      const heading = bearing(stops()[from].position, stops()[to].position);
+      cursorElement.querySelector('svg').style.transform = `rotate(${heading}deg)`;
+      cursorElement.querySelector('.tracking-truck-badge').style.transform = `rotate(${-heading}deg)`;
       const completed = observations().slice(0, Math.min(index + 1, observations().length)).map(stop => stop.position);
       travelled.setLatLngs(predicting ? completed : [...completed, position]);
       forecastTravelled.setLatLngs(predicting ? [observations().at(-1).position, position] : []);
@@ -178,27 +180,37 @@
         cursor = L.marker(positions[0],{
           interactive:false,keyboard:false,zIndexOffset:800,
           icon:L.divIcon({
-            className:'tracking-cursor',iconSize:[58,72],iconAnchor:[29,36],
-            html:`<svg viewBox="0 0 58 72" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-              <path d="M11 8Q11 2 18 2H40Q47 2 47 8V26H50V67H8V26H11Z" fill="#fffdf2" stroke="#fffdf2" stroke-width="5" stroke-linejoin="round"/>
-              <g fill="#263c37" stroke="#152f29" stroke-width="1.5">
-                <rect x="5" y="13" width="8" height="14" rx="3"/><rect x="45" y="13" width="8" height="14" rx="3"/>
-                <rect x="5" y="48" width="8" height="15" rx="3"/><rect x="45" y="48" width="8" height="15" rx="3"/>
+            className:'tracking-cursor',iconSize:[64,80],iconAnchor:[32,40],
+            html:`<svg viewBox="0 0 72 88" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 10Q15 4 23 4H49Q57 4 57 10V31H61V82H11V31H15Z" fill="#fffdf2" stroke="#fffdf2" stroke-width="6" stroke-linejoin="round"/>
+              <g fill="#263c37" stroke="#15392f" stroke-width="2">
+                <rect x="6" y="18" width="11" height="19" rx="4"/><rect x="55" y="18" width="11" height="19" rx="4"/>
+                <rect x="6" y="58" width="11" height="20" rx="4"/><rect x="55" y="58" width="11" height="20" rx="4"/>
               </g>
-              <rect x="10" y="28" width="38" height="37" rx="5" fill="var(--truck-body)" stroke="#174a3b" stroke-width="2"/>
-              <path d="M15 33H43M15 60H43" stroke="#f5d264" stroke-width="3" stroke-linecap="round"/>
-              <path d="M18 38H40M18 56H40" stroke="#fffdf2" stroke-opacity=".3" stroke-width="1.5"/>
-              <path d="M29 48C22 48 21 41 29 39C37 41 36 48 29 48Z" fill="#e4f4c9"/>
-              <path d="M29 48V42M29 46L32 43" fill="none" stroke="#277958" stroke-width="1.3" stroke-linecap="round"/>
-              <text x="29" y="56" text-anchor="middle" fill="#fffdf2" font-family="sans-serif" font-size="8" font-weight="700">廚餘</text>
-              <rect x="12" y="4" width="34" height="25" rx="7" fill="#fffdf2" stroke="#174a3b" stroke-width="2"/>
-              <path d="M17 12Q29 8 41 12L39 21H19Z" fill="#8bc8d2" stroke="#174a3b" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M21 13L19 18M26 12L23 20" stroke="#e2f6f5" stroke-width="2" stroke-linecap="round"/>
-              <rect x="24" y="23" width="10" height="4" rx="1.5" fill="#efaa3a" stroke="#a87124" stroke-width="1"/>
-              <path d="M17 7H21M37 7H41" stroke="#f1d365" stroke-width="3" stroke-linecap="round"/>
-              <path d="M19 65H39" stroke="#174a3b" stroke-width="3" stroke-linecap="round"/>
-              <path d="M14 65L18 61M23 65L27 61M32 65L36 61M41 65L45 61" stroke="#f5d264" stroke-width="2"/>
-              <path d="M12 67H18M40 67H46" stroke="#db6650" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M9 22V32M63 22V32M9 62V74M63 62V74" stroke="#59756b" stroke-width="2" stroke-linecap="round"/>
+              <rect x="12" y="32" width="48" height="49" rx="7" fill="var(--truck-body)" stroke="#174a3b" stroke-width="2"/>
+              <path d="M18 37H54" stroke="#fffdf2" stroke-opacity=".42" stroke-width="3" stroke-linecap="round"/>
+              <path d="M16 42V70M56 42V70" stroke="#f2d169" stroke-width="3" stroke-linecap="round"/>
+              <path d="M21 42H51" stroke="#123d38" stroke-opacity=".22" stroke-width="2" stroke-linecap="round"/>
+              <g transform="translate(36 57)"><g class="tracking-truck-badge">
+                <circle r="11.5" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
+                <text x="0" y="7" text-anchor="middle" fill="#174a3b" font-family="Arial,sans-serif" font-size="21" font-weight="800">6</text>
+              </g></g>
+              <text x="36" y="76" text-anchor="middle" fill="#fffdf2" font-family="sans-serif" font-size="8" font-weight="700" letter-spacing="1">廚餘回收</text>
+              <path d="M16 81H56" stroke="#174a3b" stroke-width="4" stroke-linecap="round"/>
+              <path d="M18 81L22 77M28 81L32 77M38 81L42 77M48 81L52 77" stroke="#f2d169" stroke-width="2.5"/>
+              <path d="M14 83H21M51 83H58" stroke="#df6b50" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M15 18H9M57 18H63" stroke="#174a3b" stroke-width="2.5"/>
+              <rect x="5" y="13" width="5" height="9" rx="2" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
+              <rect x="62" y="13" width="5" height="9" rx="2" fill="#fffdf2" stroke="#174a3b" stroke-width="1.5"/>
+              <path d="M16 12Q16 5 23 5H49Q56 5 56 12V30Q56 35 50 35H22Q16 35 16 30Z" fill="#fffdf2" stroke="#174a3b" stroke-width="2"/>
+              <path d="M21 14Q36 10 51 14L48 26H24Z" fill="#72b9c8" stroke="#174a3b" stroke-width="1.7" stroke-linejoin="round"/>
+              <path d="M26 15L23 21M33 14L29 24" stroke="#d5f1ee" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M25 26L31 24M41 24L47 26" stroke="#174a3b" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M22 9H27M45 9H50" stroke="#f2d169" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M30 8H42" stroke="#b6c9bd" stroke-width="2" stroke-linecap="round"/>
+              <rect x="28" y="29" width="16" height="5" rx="2" fill="#f4b348" stroke="#bb842d" stroke-width="1"/>
+              <path d="M33 30V33M39 30V33" stroke="#ffe7ac" stroke-width="1.2"/>
             </svg>`
           })
         }).addTo(routeLayer);
