@@ -26,7 +26,7 @@
 .data-view[hidden]{display:none}
 .data-eyebrow{font-size:14px;margin-bottom:18px;color:var(--muted)}
 .data-trends{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
-.data-trends h3,.data-view>h3,.data-facilities-heading h3{font-size:clamp(23px,2.2vw,32px)}
+.data-trends h3,.location-network>h3,.data-facilities-heading h3{font-size:clamp(23px,2.2vw,32px)}
 .data-bars{display:grid;gap:24px;margin:42px 0 28px}
 .data-bars>[role=listitem]{display:grid;grid-template-columns:42px 1fr 80px;gap:14px;align-items:center;font-size:14px}
 .data-bars strong{text-align:right;font-variant-numeric:tabular-nums}
@@ -63,6 +63,7 @@
 .data-network article>strong{font-size:clamp(42px,4.7vw,66px);line-height:1.1;letter-spacing:-.04em}
 .data-network h4{font-size:20px;margin:20px 0 16px}
 .data-network article>p{font-size:14px;margin:0 0 24px}
+.location-network{padding:32px;background:var(--paper);margin-bottom:40px}
 .data-network-foot{display:grid;grid-template-columns:1fr 1fr;gap:40px;border-top:1px solid #123d3826;padding-top:28px;margin-top:28px}
 .data-network-foot h4{font-size:18px}
 .data-network-foot p{font-size:14px;margin-top:16px}
@@ -80,4 +81,4 @@
 .data-evidence figcaption{font-size:13px}
 @media(min-width:701px) and (max-width:1150px){.site-header nav{gap:16px}.site-header nav a{font-size:14px}.data-metric{padding:24px 18px}.data-unit{font-size:14px}.data-trends{gap:28px}.data-annual{padding-left:28px}.data-facilities>article,.data-network>article{padding:24px 18px}}
 @media(max-width:800px){.data-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.data-metric>strong{font-size:48px}.data-period{min-height:0}.data-trends{grid-template-columns:1fr;gap:36px}.data-annual{border-left:0;border-top:1px solid #123d3826;padding:30px 0 0}.data-facilities,.data-network{grid-template-columns:1fr}.data-facilities>article,.data-network>article{padding:26px}.data-evidence{gap:16px}}
-@media(max-width:700px){.food-data-section{padding-top:70px;padding-bottom:70px}.food-data-section .section-heading{margin-bottom:32px}.data-update-bar{flex-wrap:wrap;gap:14px}.data-update-bar>div{flex:1 1 250px}#reload-food-data{font-size:13px}.data-frequency-note,.data-scope-note{font-size:13px}.data-metric{padding:22px 16px}.data-period{font-size:12px;min-height:39px}.data-metric>strong{font-size:clamp(27px,7.6vw,48px);margin-top:10px}.data-unit{font-size:14px;min-height:45px}.data-metric>p{font-size:13px}.data-metric>a{font-size:11px}.data-explorer{padding:24px 18px;margin-top:32px}.data-tabs{gap:5px;margin-bottom:28px}.data-tabs button{padding:12px 8px;flex:1;font-size:14px}.data-bars>[role=listitem]{grid-template-columns:36px 1fr 71px;gap:9px;font-size:13px}.data-bar-track{height:20px}.data-facilities-heading{display:block}.data-capacity-total{margin-top:28px}.data-network-foot{grid-template-columns:1fr;gap:28px}.data-sources>summary{font-size:15px;padding-right:20px;position:relative}.data-sources>summary>span{position:absolute;right:0;top:0}.data-source-table{min-width:540px}.data-evidence{grid-template-columns:1fr;gap:28px}.data-evidence img{height:230px}.data-table th,.data-table td{padding-top:10px;padding-bottom:10px}}
+@media(max-width:700px){.location-network{padding:24px 18px;margin-bottom:32px}.food-data-section{padding-top:70px;padding-bottom:70px}.food-data-section .section-heading{margin-bottom:32px}.data-update-bar{flex-wrap:wrap;gap:14px}.data-update-bar>div{flex:1 1 250px}#reload-food-data{font-size:13px}.data-frequency-note,.data-scope-note{font-size:13px}.data-metric{padding:22px 16px}.data-period{font-size:12px;min-height:39px}.data-metric>strong{font-size:clamp(27px,7.6vw,48px);margin-top:10px}.data-unit{font-size:14px;min-height:45px}.data-metric>p{font-size:13px}.data-metric>a{font-size:11px}.data-explorer{padding:24px 18px;margin-top:32px}.data-tabs{gap:5px;margin-bottom:28px}.data-tabs button{padding:12px 8px;flex:1;font-size:14px}.data-bars>[role=listitem]{grid-template-columns:36px 1fr 71px;gap:9px;font-size:13px}.data-bar-track{height:20px}.data-facilities-heading{display:block}.data-capacity-total{margin-top:28px}.data-network-foot{grid-template-columns:1fr;gap:28px}.data-sources>summary{font-size:15px;padding-right:20px;position:relative}.data-sources>summary>span{position:absolute;right:0;top:0}.data-source-table{min-width:540px}.data-evidence{grid-template-columns:1fr;gap:28px}.data-evidence img{height:230px}.data-table th,.data-table td{padding-top:10px;padding-bottom:10px}}
