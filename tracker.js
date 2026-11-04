@@ -5,7 +5,6 @@
       region: '北區沙嶺 · 缸瓦甫路', position: [22.527, 114.129], predicted: true,
       description: '推測終點：沙嶺 O·PARK2。推測根據追蹤器在坪輋、粉嶺一帶的活動範圍及設施位置，尚待收運紀錄確認。',
       reasoning: '善衡追蹤器從中大移到坪輋，再到粉嶺業豐街一帶。沙嶺 O·PARK2 位於新界北，是本次選取的地理候選處理終點。',
-      limitation: '此去向依零散定位及設施位置推測，尚待收運紀錄確認。',
       sources: [{name:'政府 O·PARK2 設施介紹',url:'https://www.info.gov.hk/gia/general/202405/20/P2024052000597.htm'}]
     },
     shatin: {
@@ -13,7 +12,6 @@
       region: '馬料水 · 水廠街1號', position: [22.407, 114.214], predicted: true,
       description: '推測終點：沙田污水處理廠內的廚餘預處理及共厭氧消化設施。推測根據沙田、大水坑一帶的定位及設施位置，尚待收運紀錄確認。',
       reasoning: '崇基追蹤器的觀察範圍包括九肚山、小瀝源及大水坑。鄰近的沙田污水處理廠已有廚餘預處理及共厭氧消化設施，因此列為地理候選。',
-      limitation: '廣善街在2024年官方資料中列有廚餘流動收集點，沿途停留可能涉及巡迴收集；現有定位不能確認當次使用該點，亦未證實抵達沙田廠。',
       sources: [{name:'環保署廚餘共厭氧消化計劃',url:'https://www.epd.gov.hk/epd/tc_chi/environmentinhk/waste/prob_solutions/codigestion_trial_scheme.html'},{name:'2024年廣善街廚餘收集點資料',url:'https://www.districtcouncils.gov.hk/st/doc/2024_2027/en/dc_meetings_doc/26827/st_2024_47_tcannexII.pdf'}]
     }
   };
@@ -50,12 +48,12 @@
       <div id="tracking-panel" role="tabpanel" aria-labelledby="tracking-shho">
         <div class="tracking-toolbar"><div><h3 class="tracking-route-name"></h3><p class="tracking-route-summary"></p></div><div class="tracking-actions"><button type="button" class="tracking-overview" aria-pressed="false">查看完整去向</button><button type="button" class="button tracking-play">播放移動方向</button></div></div>
         <div class="tracking-stage"><div><span>從</span><strong class="tracking-from"></strong></div><span class="tracking-direction" aria-label="移動方向"></span><div><span class="tracking-stage-kind">定位方向</span><strong class="tracking-to"></strong></div></div>
-        <div class="tracking-map-side"><div id="tracking-map" aria-label="追蹤器移動方向與預測終點地圖"></div><div class="tracking-map-legend"><span><i class="tracking-observed-line"></i>定位方向</span><span><i class="tracking-predicted-line"></i>預測方向</span><p>回收車沿紀錄先後移動；線條顯示方向，並非實際行車道路。</p></div></div>
+        <div class="tracking-map-side"><div id="tracking-map" aria-label="追蹤器移動方向與預測終點地圖"></div><div class="tracking-map-legend"><span><i class="tracking-observed-line"></i>定位方向</span><span><i class="tracking-predicted-line"></i>預測方向</span></div></div>
         <div class="tracking-playhead"><button type="button" class="tracking-previous" aria-label="上一個位置">上一站</button><label for="tracking-position">目前位置 <output id="tracking-count"></output></label><button type="button" class="tracking-next" aria-label="下一個位置">下一站</button><input id="tracking-position" type="range" min="0" value="0" step="1" aria-label="選擇位置或預測終點"></div>
         <ol class="tracking-stops" aria-label="移動位置與預測終點"></ol>
         <div class="tracking-current"><h4></h4><p></p></div>
         <p class="tracking-status" role="status" aria-live="polite"></p>
-        <div class="tracking-forecast"><div><p>我們推測的處理終點</p><h3 class="tracking-forecast-name"></h3><p class="tracking-forecast-region"></p><p class="tracking-forecast-status">推測 · 尚未確認</p></div><div><h4>推測依據</h4><p class="tracking-forecast-reason"></p><p class="tracking-forecast-limitation"></p><div class="tracking-forecast-sources"></div></div></div>
+        <div class="tracking-forecast"><div><p>我們推測的處理終點</p><h3 class="tracking-forecast-name"></h3><p class="tracking-forecast-region"></p><p class="tracking-forecast-status">推測 · 尚未確認</p></div><div><h4>推測依據</h4><p class="tracking-forecast-reason"></p><div class="tracking-forecast-sources"></div></div></div>
         <details class="tracking-facilities"><summary>香港還有哪些廚餘處理設施？</summary><p>環保署2026–27年度政府答覆列出以下四項公共集中設施／計劃，總設計處理能力為每日600公噸。另有私營及在地廚餘處理系統，以下並非全港完整名錄。</p><div class="tracking-facility-table"><table><thead><tr><th scope="col">設施／計劃</th><th scope="col">位置</th><th scope="col">資料</th></tr></thead><tbody><tr><td>O·PARK1</td><td>小蠔灣深豐路5號</td><td><a href="https://www.opark.gov.hk/tc/deliver.php" target="_blank" rel="noreferrer">設施地址</a></td></tr><tr><td>O·PARK2</td><td>北區沙嶺缸瓦甫路</td><td><a href="https://www.info.gov.hk/gia/general/202405/20/P2024052000597.htm" target="_blank" rel="noreferrer">政府介紹</a></td></tr><tr><td>大埔廚餘預處理及共消化</td><td>大利街預處理設施；大貴街7號污水處理廠</td><td><a href="https://www.epd.gov.hk/epd/tc_chi/environmentinhk/waste/prob_solutions/codigestion_trial_scheme.html" target="_blank" rel="noreferrer">計劃介紹</a></td></tr><tr><td>沙田廚餘預處理及共消化</td><td>馬料水水廠街1號沙田污水處理廠</td><td><a href="https://tel.directory.gov.hk/0223000124_CHI.html" target="_blank" rel="noreferrer">政府地址</a></td></tr></tbody></table></div><p><a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf" target="_blank" rel="noreferrer">環保署2026–27年度政府答覆</a>亦列有10個已運作的在地系統。私營例子包括<a href="https://www.gekrrl.hk/" target="_blank" rel="noreferrer">綠色環保廚餘回收有限公司</a>，營辦商網站列工場位於上水河上鄉鳳崗山路丈量約份第95約地段第5號，並提供廚餘收集及動物飼料生產服務。</p></details>
       </div>`;
     const tabs = [...root.querySelectorAll('[data-route]')];
@@ -148,7 +146,6 @@
       root.querySelector('.tracking-forecast-name').textContent = candidate.displayName;
       root.querySelector('.tracking-forecast-region').textContent = candidate.region;
       root.querySelector('.tracking-forecast-reason').textContent = candidate.reasoning;
-      root.querySelector('.tracking-forecast-limitation').textContent = candidate.limitation;
       const sourceList = root.querySelector('.tracking-forecast-sources');
       sourceList.replaceChildren();
       candidate.sources.forEach(source => {const link=document.createElement('a');link.href=source.url;link.textContent=source.name;link.target='_blank';link.rel='noreferrer';sourceList.append(link);});

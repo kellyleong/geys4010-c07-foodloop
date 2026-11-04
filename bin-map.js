@@ -27,7 +27,6 @@
       #bin-map .bm-map-heading h3{font-size:20px;margin:0 0 6px;font-weight:700;letter-spacing:-.02em}
       #bin-map .bm-map-heading p{margin:0;font-size:14px;line-height:1.6}
       #bin-map .bm-map{height:530px;width:100%;z-index:0;background:#dce4df;flex:1;min-height:400px}
-      #bin-map .bm-map-note{padding:15px 24px;font-size:14px;line-height:1.65;margin:0;background:var(--paper)}
       #bin-map .bm-tile-status{padding:10px 24px;background:#eee7d5;font-size:14px;margin:0}
       #bin-map .bm-results-side{padding:24px;min-width:0;background:var(--paper)}
       #bin-map .bm-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -59,8 +58,7 @@
       #bin-map .bm-map-unavailable{padding:30px;font-size:15px}
       #bin-map .leaflet-container{font-family:inherit}
       #bin-map .leaflet-tooltip{color:var(--ink);border:1px solid #c5d2c7;box-shadow:0 3px 10px #123d3814;font-family:inherit;font-size:14px}
-      #bin-map .bm-source{font-size:14px;line-height:1.75;color:#61776a;margin:14px 0 0}
-      @media(max-width:820px){#bin-map .bm-layout{grid-template-columns:1fr}#bin-map .bm-map{height:350px;min-height:350px;flex:auto}#bin-map .bm-results-side{padding:20px}#bin-map .bm-results{height:430px;max-height:430px}#bin-map .bm-map-heading{padding:20px}#bin-map .bm-map-note{padding:12px 20px}}
+      @media(max-width:820px){#bin-map .bm-layout{grid-template-columns:1fr}#bin-map .bm-map{height:350px;min-height:350px;flex:auto}#bin-map .bm-results-side{padding:20px}#bin-map .bm-results{height:430px;max-height:430px}#bin-map .bm-map-heading{padding:20px}}
       @media(prefers-reduced-motion:reduce){#bin-map .leaflet-zoom-animated{transition:none}}
     `;
     root.replaceChildren(style);
@@ -100,8 +98,7 @@
     const tileStatus = el('p', 'bm-tile-status', '底圖暫時未能載入；地區選單及完整位置名單仍可使用。');
     tileStatus.hidden = true;
     tileStatus.setAttribute('role', 'status');
-    mapSide.append(mapHeading, mapContainer, tileStatus,
-      el('p', 'bm-map-note', '● 地區概覽點，並非箱位。請按「官方詳細位置圖」核對回收箱所在樓宇及平台；使用資格以屋邨安排為準。'));
+    mapSide.append(mapHeading, mapContainer, tileStatus);
     const resultsSide = el('div', 'bm-results-side');
     const form = el('form', 'bm-form');
     form.setAttribute('role', 'search');
@@ -139,7 +136,7 @@
     pagination.append(previous, pageLabel, next);
     resultsSide.append(form, header, resultList, pagination);
     layout.append(mapSide, resultsSide);
-    root.append(layout, el('p', 'bm-source', '資料來源：公共屋邨／屋苑智能廚餘回收箱位置名單，截至 2026 年 9 月 30 日。名單共 221 個屋邨／屋苑，並非回收箱總數；每個屋邨可能設有多個回收箱。星號 * 表示該位置只供該屋苑租戶使用。'));
+    root.append(layout);
 
     let page = 1;
     const pageSize = 8;

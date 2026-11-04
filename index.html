@@ -9,13 +9,13 @@
   <link rel="icon" href="assets/foodloop-logo.png" type="image/png">
   <link rel="stylesheet" href="assets/leaflet.css">
   <link rel="stylesheet" href="style.css?instagram-link=2026-10-27">
-  <link rel="stylesheet" href="tracker.css">
+  <link rel="stylesheet" href="tracker.css?notes=removed">
   <link rel="stylesheet" href="motion.css">
-  <link rel="stylesheet" href="food-waste-data.css">
+  <link rel="stylesheet" href="food-waste-data.css?notes=removed">
   <script src="assets/leaflet.js" defer></script>
-  <script src="bin-map.js" defer></script>
+  <script src="bin-map.js?notes=removed" defer></script>
   <script src="game.js" defer></script>
-  <script src="tracker.js" defer></script>
+  <script src="tracker.js?notes=removed" defer></script>
   <script src="motion.js" defer></script>
   <script src="food-waste-data.js?network-note=removed" defer></script>
   <script src="app.js" defer></script>
@@ -62,33 +62,33 @@
     <div><h2 id="food-data-title">香港廚餘，<br>回收進行式。</h2><p class="lead">收集了多少？還有多少走進堆填區？把不同時期的公開數據放在一起，看清楚回收的下一步。</p></div>
   </div>
   <div class="data-update-bar"><div><span class="data-update-label">官方資料 · 每日同步</span><p id="data-sync-status" role="status">正在讀取最近同步紀錄。</p></div><button id="reload-food-data" type="button">重新載入數據 <span aria-hidden="true">↻</span></button></div>
-  <p class="data-frequency-note">年度回收量及計劃網頁的回收點數目每日自動讀取；其他公布按所示日期整理。</p>
+  
   <div class="data-metrics">
     <article class="data-metric data-metric-featured"><span class="data-period">2026 年上半年 · 每日平均</span><strong>約 400</strong><span class="data-unit">公噸廚餘收集量</span><p>較 2025 年每日約 350 公噸，增加約 14%。</p><a href="https://www.info.gov.hk/gia/general/202610/21/P2026102100355p.htm" target="_blank" rel="noreferrer">政府公布 · 2026.10.21 ↗</a></article>
     <article class="data-metric"><span class="data-period">2025 年 · 政府處理設施</span><strong>126,549</strong><span class="data-unit">公噸廚餘接收及處理量</span><p>O·PARK1、O·PARK2 及大埔、沙田廚餘預處理設施合計。</p><a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=84" target="_blank" rel="noreferrer">2026–27 預算答覆 · 第 84 頁 ↗</a></article>
     <article class="data-metric"><span class="data-period">2024 年 · 全港年度統計</span><strong>3,001</strong><span class="data-unit">公噸廚餘每日棄置於堆填區</span><p>其中家居廚餘約佔 67%；工商業約佔 33%。</p><a href="https://www.wastereduction.gov.hk/sites/default/files/resources_centre/waste_statistics/msw2024_tc.pdf#page=18" target="_blank" rel="noreferrer">固體廢物監察報告 · 第 14 頁 ↗</a></article>
     <article class="data-metric"><span class="data-period">2024 年 · 全港年度統計</span><strong>8.7<span>%</span></strong><span class="data-unit">整體廚餘回收率</span><p>包含政府、工業營運商及非政府機構自行回收處理的廚餘。</p><a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=283" target="_blank" rel="noreferrer">2026–27 預算答覆 · 第 283 頁 ↗</a></article>
   </div>
-  <p class="data-scope-note">讀數小提示：400 公噸是 2026 年上半年的收集量；8.7% 是 2024 年全港回收率。統計時期與範圍不同，不能直接相除計算「現時回收率」。</p>
+  
   <div class="data-explorer" data-ui>
     <div class="data-tabs" role="tablist" aria-label="香港廚餘數據主題"><button id="data-tab-recovery" role="tab" aria-selected="true" aria-controls="data-view-recovery" data-statistics-view="recovery">回收趨勢</button><button id="data-tab-facilities" role="tab" aria-selected="false" aria-controls="data-view-facilities" data-statistics-view="facilities" tabindex="-1">處理設施</button></div>
     <div id="data-view-recovery" class="data-view" role="tabpanel" aria-labelledby="data-tab-recovery" tabindex="0">
       <div class="data-trends">
-        <div><p class="data-eyebrow">政府設施接收紀錄 · 公噸／年</p><h3>回收量，逐年增加。</h3><div class="data-bars" role="list" aria-label="政府廚餘處理設施每年接收量"><div role="listitem"><span>2023</span><div class="data-bar-track"><i style="width:48.0%"></i></div><strong>60,792</strong></div><div role="listitem"><span>2024</span><div class="data-bar-track"><i style="width:79.7%"></i></div><strong>100,831</strong></div><div role="listitem"><span>2025</span><div class="data-bar-track"><i style="width:100%"></i></div><strong>126,549</strong></div></div><p class="small">同一組政府設施的廚餘接收及處理量，不包括另列的動物廢料。<a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=84" target="_blank" rel="noreferrer">來源：第 84 頁</a></p></div>
-        <div class="data-annual"><p class="data-eyebrow">全港回收 · 政府統計處 API</p><h3><span id="annual-data-year">2024</span> 年度回收量</h3><p class="data-annual-number"><strong id="annual-data-value">105</strong><span>千公噸</span></p><p>這是包含其他回收渠道的全港統計，與左方政府設施接收量的範圍不同。</p><div class="data-table-wrap"><table class="data-table"><caption>政府統計處年度回收量（千公噸，整數）</caption><thead><tr><th scope="col">年份</th><th scope="col">廚餘回收量</th></tr></thead><tbody id="annual-data-rows"><tr><th scope="row">2021</th><td>66</td></tr><tr><th scope="row">2022</th><td>72</td></tr><tr><th scope="row">2023</th><td>79</td></tr><tr><th scope="row">2024</th><td>105</td></tr></tbody></table></div><p class="small">API 以千公噸整數呈現；2024 年報的較精確數值為 104,800 公噸。<a href="https://www.censtatd.gov.hk/tc/web_table.html?id=950-92053" target="_blank" rel="noreferrer">官方統計表 950-92053 ↗</a></p></div>
+        <div><p class="data-eyebrow">政府設施接收紀錄 · 公噸／年</p><h3>回收量，逐年增加。</h3><div class="data-bars" role="list" aria-label="政府廚餘處理設施每年接收量"><div role="listitem"><span>2023</span><div class="data-bar-track"><i style="width:48.0%"></i></div><strong>60,792</strong></div><div role="listitem"><span>2024</span><div class="data-bar-track"><i style="width:79.7%"></i></div><strong>100,831</strong></div><div role="listitem"><span>2025</span><div class="data-bar-track"><i style="width:100%"></i></div><strong>126,549</strong></div></div></div>
+        <div class="data-annual"><p class="data-eyebrow">全港回收 · 政府統計處 API</p><h3><span id="annual-data-year">2024</span> 年度回收量</h3><p class="data-annual-number"><strong id="annual-data-value">105</strong><span>千公噸</span></p><div class="data-table-wrap"><table class="data-table"><caption>政府統計處年度回收量（千公噸，整數）</caption><thead><tr><th scope="col">年份</th><th scope="col">廚餘回收量</th></tr></thead><tbody id="annual-data-rows"><tr><th scope="row">2021</th><td>66</td></tr><tr><th scope="row">2022</th><td>72</td></tr><tr><th scope="row">2023</th><td>79</td></tr><tr><th scope="row">2024</th><td>105</td></tr></tbody></table></div></div>
       </div>
-      <details class="data-detail"><summary>2025 年的廚餘，從哪些渠道送到政府設施？</summary><div class="data-table-wrap"><table class="data-table"><caption>2025 年政府廚餘處理設施接收量 · 公噸</caption><thead><tr><th scope="col">收集渠道</th><th scope="col">回收量</th></tr></thead><tbody><tr><th scope="row">公共屋邨</th><td>34,215</td></tr><tr><th scope="row">私人住宅樓宇</th><td>7,767</td></tr><tr><th scope="row">「綠在區區」回收點</th><td>245</td></tr><tr><th scope="row">公眾街市</th><td>495</td></tr><tr><th scope="row">公眾垃圾站廚餘回收點</th><td>1,292</td></tr><tr><th scope="row">廚餘回收流動點</th><td>949</td></tr><tr><th scope="row">工商業和其他處所</th><td>65,068</td></tr><tr><th scope="row">自資或政府其他資助收集</th><td>16,518</td></tr></tbody><tfoot><tr><th scope="row">總數（官方公布）</th><td>126,549</td></tr></tfoot></table></div><p class="small">分項經四捨五入，相加未必等於總數。<a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=201" target="_blank" rel="noreferrer">來源：2026–27 預算答覆，第 201 頁。</a></p></details>
+      <details class="data-detail"><summary>2025 年的廚餘，從哪些渠道送到政府設施？</summary><div class="data-table-wrap"><table class="data-table"><caption>2025 年政府廚餘處理設施接收量 · 公噸</caption><thead><tr><th scope="col">收集渠道</th><th scope="col">回收量</th></tr></thead><tbody><tr><th scope="row">公共屋邨</th><td>34,215</td></tr><tr><th scope="row">私人住宅樓宇</th><td>7,767</td></tr><tr><th scope="row">「綠在區區」回收點</th><td>245</td></tr><tr><th scope="row">公眾街市</th><td>495</td></tr><tr><th scope="row">公眾垃圾站廚餘回收點</th><td>1,292</td></tr><tr><th scope="row">廚餘回收流動點</th><td>949</td></tr><tr><th scope="row">工商業和其他處所</th><td>65,068</td></tr><tr><th scope="row">自資或政府其他資助收集</th><td>16,518</td></tr></tbody><tfoot><tr><th scope="row">總數（官方公布）</th><td>126,549</td></tr></tfoot></table></div></details>
     </div>
     <div id="data-view-facilities" class="data-view" role="tabpanel" aria-labelledby="data-tab-facilities" tabindex="0" hidden>
       <div class="data-facilities-heading"><div><p class="data-eyebrow">政府設施 · 設計處理能力</p><h3>四個設施，一起轉廢為能。</h3></div><p class="data-capacity-total"><strong>600</strong><span>公噸／日 · 合計設計能力</span></p></div>
       <div class="data-facilities"><article><span>北大嶼山 · 小蠔灣</span><h4>O·PARK1</h4><p><strong>200</strong> 公噸／日</p><a href="https://www.opark.gov.hk/tc/" target="_blank" rel="noreferrer">官方設施介紹 ↗</a></article><article><span>北區 · 沙嶺</span><h4>O·PARK2</h4><p><strong>300</strong> 公噸／日</p><a href="https://www.info.gov.hk/gia/general/202405/20/P2024052000597.htm" target="_blank" rel="noreferrer">政府設施介紹 ↗</a></article><article><span>大埔及沙田污水處理廠</span><h4>共厭氧消化試驗</h4><p><strong>100</strong> 公噸／日 · 兩廠合計</p><a href="https://www.epd.gov.hk/epd/tc_chi/environmentinhk/waste/prob_solutions/codigestion_trial_scheme.html" target="_blank" rel="noreferrer">環保署計劃介紹 ↗</a></article></div>
-      <p class="small data-panel-note">設計容量按官方設施資料整理，核對於 2026.11.04；不代表當日接收量、剩餘容量或即時使用率。O·PARK1 的 1,400 萬度餘電及每日約 20 公噸堆肥亦屬設計／預計數字。</p>
-      <details class="data-detail"><summary>產電的年度實績，與設計數字有何不同？</summary><div class="data-table-wrap"><table class="data-table"><caption>O·PARK 年度實際產電量 · 百萬度電（百萬 kWh）</caption><thead><tr><th scope="col">設施</th><th scope="col">2023</th><th scope="col">2024</th><th scope="col">2025</th></tr></thead><tbody><tr><th scope="row">O·PARK1</th><td>12.5</td><td>12.6</td><td>8.4</td></tr><tr><th scope="row">O·PARK2</th><td>—</td><td>—</td><td>31.4</td></tr></tbody></table></div><p class="small">2025 年 O·PARK1 因儲存缸維修影響處理量，產電量下降。O·PARK2 在 2024 年處於測試及試行運作階段，沒有詳細產電紀錄。這是設施總產電量，不是輸出電網的剩餘電力；O·PARK2 亦處理動物廢料，不宜將其產電全數歸於廚餘。<a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=30" target="_blank" rel="noreferrer">來源：2026–27 預算答覆，第 30、84 頁。</a></p></details>
+      
+      <details class="data-detail"><summary>產電的年度實績，與設計數字有何不同？</summary><div class="data-table-wrap"><table class="data-table"><caption>O·PARK 年度實際產電量 · 百萬度電（百萬 kWh）</caption><thead><tr><th scope="col">設施</th><th scope="col">2023</th><th scope="col">2024</th><th scope="col">2025</th></tr></thead><tbody><tr><th scope="row">O·PARK1</th><td>12.5</td><td>12.6</td><td>8.4</td></tr><tr><th scope="row">O·PARK2</th><td>—</td><td>—</td><td>31.4</td></tr></tbody></table></div></details>
       <a class="text-link" href="#journey">接著看廚餘如何轉化 →</a>
     </div>
   </div>
   <details id="data-sources" class="data-sources"><summary>查看官方來源、資料日期與原文截圖 <span aria-hidden="true">＋</span></summary>
-    <p class="small">以下為截至 2026.11.04 搜集並核對的主要官方公開資料。統計期、公布日期與網站同步時間各有不同；原文截圖保留擷取當時內容，不會隨同步改動。</p>
+    
     <div class="data-table-wrap"><table class="data-table data-source-table"><caption>香港廚餘回收公開數據來源</caption><thead><tr><th scope="col">資料與連結</th><th scope="col">所屬時期／更新方式</th></tr></thead><tbody>
       <tr><th scope="row"><a href="https://www.info.gov.hk/gia/general/202610/21/P2026102100355p.htm" target="_blank" rel="noreferrer">政府最新已核對公布 ↗</a><small>400 公噸／日；約 260 個公眾回收點</small></th><td>2026 上半年／2026.10.21 公布；編輯整理</td></tr>
       <tr><th scope="row"><a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf" target="_blank" rel="noreferrer">2026–27 年度環保署預算答覆 ↗</a><small>產電 p.30；接收量 p.84；渠道 p.201；分區 p.62、p.200；回收率 p.283</small></th><td>2023–2025 年接收量及產電；公屋資料截至 2026.02；編輯整理</td></tr>
@@ -119,9 +119,9 @@
 
 <section id="electricity" class="section frame" aria-labelledby="electricity-title">
   <div class="section-heading"><div class="side-note"><p>由微生物開始<br>把能量接回電網</p></div><div><h2 id="electricity-title">生物氣，點亮下一站</h2><p class="lead">廚餘在無氧環境中分解，產生生物氣。經除硫淨化後，生物氣進入熱電聯產系統。</p></div></div>
-  <div class="energy-layout"><div><div class="energy-path"><span>厭氧消化</span><b aria-hidden="true">↓</b><span>生物氣除硫與淨化</span><b aria-hidden="true">↓</b><span>熱電聯產</span></div><p>產生的電力先供中心運作，剩餘電力輸出電網；系統的熱能亦供其他設施使用。</p><div class="energy-estimate"><strong>1,400 萬度</strong><p>官方預計每年可輸出的剩餘電力<br>約相當於3,000個家庭用電量</p></div><p class="small">以上是設計／預計比較，並非最新實測年產量。<a href="https://www.opark.gov.hk/tc/process.php" target="_blank" rel="noreferrer">來源：O·PARK1</a></p></div><figure class="board-figure"><img src="assets/results-board.jpg" loading="lazy" width="1536" height="2048" alt="O·PARK1 現場累計看板，日期為2026年9月"><figcaption>現場看板紀錄 · 2026年9月</figcaption></figure></div>
+  <div class="energy-layout"><div><div class="energy-path"><span>厭氧消化</span><b aria-hidden="true">↓</b><span>生物氣除硫與淨化</span><b aria-hidden="true">↓</b><span>熱電聯產</span></div><p>產生的電力先供中心運作，剩餘電力輸出電網；系統的熱能亦供其他設施使用。</p><div class="energy-estimate"><strong>1,400 萬度</strong><p>官方預計每年可輸出的剩餘電力<br>約相當於3,000個家庭用電量</p></div></div><figure class="board-figure"><img src="assets/results-board.jpg" loading="lazy" width="1536" height="2048" alt="O·PARK1 現場累計看板，日期為2026年9月"><figcaption>現場看板紀錄 · 2026年9月</figcaption></figure></div>
   <div class="record-strip"><p>照片中的累計成果<br><span>截至看板所標示的2026年9月</span></p><div><strong>&gt;37.1 萬</strong><span>公噸廚餘收集量</span></div><div><strong>&gt;8,100 萬</strong><span>kWh 產電量</span></div><div><strong>&gt;1.75 萬</strong><span>公噸堆肥產量</span></div></div>
-  <p class="small source">以上三項為專題提供照片的累計看板紀錄，並非即時數據或年產量；產電單位依照片英文 kWh 表示。</p>
+  
 </section>
 
 <section id="tracker" class="tracker-section" aria-labelledby="tracker-title">
@@ -130,7 +130,6 @@
     <div class="tracking-summary"><p><strong>善衡書院飯堂出發</strong><br>校園、坪輋，再到粉嶺業豐街。</p><p><strong>崇基書院回收桶出發</strong><br>九肚山、小瀝源及大水坑一帶。</p></div>
     <div id="tracker-explorer" data-ui><p>正在載入兩組定位紀錄。</p></div>
     <noscript><p>善衡書院飯堂的定位方向為校園、坪輋、粉嶺；崇基書院的定位方向為九肚山、小瀝源、大水坑一帶。善衡的推測終點為沙嶺 O·PARK2；崇基的推測終點為沙田污水處理廠的廚餘處理設施。兩者均依零散定位及設施位置推測，尚待收運紀錄確認。</p></noscript>
-    <div class="tracking-notes"><p><strong>綠色路段，看移動方向</strong><br>沿已記錄的位置播放卡通廚餘回收車。點位按提供資料概略標示，動畫連線表示觀察次序，並非實際行車道路。</p><p><strong>黃色虛線，看預測去向</strong><br>最後觀察點之後的黃色路段，延伸至我們推測的處理設施。預測根據零散定位及設施位置，尚待收運紀錄確認。若追蹤器附在可重用桶上，卸料後亦可能與廚餘分開。</p></div>
   </div>
 </section>
 
@@ -145,7 +144,7 @@
       <div class="data-network"><article><strong>約 260</strong><h4>公眾廚餘回收點</h4><p>政府於 2026.10.21 公布的全港概況，涵蓋不同類型公眾回收點。</p><a href="https://www.info.gov.hk/gia/general/202610/21/P2026102100355p.htm" target="_blank" rel="noreferrer">政府公布 ↗</a></article><article><strong id="rcp-data-value">110</strong><h4>公眾垃圾站回收點</h4><p>環保署計劃網頁的現行數目；網頁未標示統計日期。</p><a href="https://www.wastereduction.gov.hk/sites/default/files/food_wise/Food_Waste_Recycling_Points_at_RCPs.pdf" target="_blank" rel="noreferrer">官方位置名單（PDF）↗</a></article><article><strong id="spots-data-value">106</strong><h4>廚餘回收流動點</h4><p>每晚定時定點服務；地點及開放時間請查閱官方名單。</p><a href="https://www.wastereduction.gov.hk/sites/default/files/food_wise/Food_Waste_Recycling_Spots.pdf" target="_blank" rel="noreferrer">官方位置及時間（PDF）↗</a></article></div>
       <div class="data-network-foot"><div><h4>公屋智能桶 · 較早公布的細分</h4><p>截至 2026 年 2 月，221 個公共屋邨共有 997 個智能廚餘回收桶；其中 126 個屋邨已達「一座一桶」。<a href="https://www.epd.gov.hk/epd/sites/default/files/epd/tc_chi/news_events/legco/files/fc_26-27_chi.pdf#page=62" target="_blank" rel="noreferrer">各區數目與收集量 ↗</a></p></div><div><h4>下一個政策目標</h4><p>2026 年施政報告提出於 2028 年第一季把全港智能廚餘回收桶增至約 2,500 個。這是目標，並非現有桶數。<a href="https://www.policyaddress.gov.hk/2026/tc/chapter7.html" target="_blank" rel="noreferrer">第 408 段 ↗</a></p></div></div>
     </div>
-<div id="bin-map" data-ui><p>正在載入221個屋邨／屋苑條目。</p><a href="data/bin-locations.json" download>回收位置資料（JSON）</a></div><noscript><p>請啟用JavaScript使用互動地圖，或<a href="data/bin-locations.json" download>回收位置資料（JSON）</a>。</p></noscript><p class="small source">名單每列代表一個屋邨／屋苑，並非一個回收桶；實際開放安排以現場及官方資料為準。</p></div></section>
+<div id="bin-map" data-ui><p>正在載入221個屋邨／屋苑條目。</p><a href="data/bin-locations.json" download>回收位置資料（JSON）</a></div><noscript><p>請啟用JavaScript使用互動地圖，或<a href="data/bin-locations.json" download>回收位置資料（JSON）</a>。</p></noscript></div></section>
 
 <section id="how-to" class="section frame" aria-labelledby="howto-title"><div class="section-heading"><div class="side-note"><p>把一餐之後的事<br>變成順手的事</p></div><div><h2 id="howto-title">廚餘桶，這樣用</h2><p class="lead">先看機身指示，再按設施要求操作。不同機型的開蓋及記錄方式可能不同。</p></div></div><ol class="howto-list"><li><h3>分開，瀝乾</h3><p>把食物與膠袋、包裝、紙巾及餐具分開，瀝走多餘水分，以可重用容器盛載。</p></li><li><h3>掃碼開蓋</h3><p>依桶身指示掃描「綠綠賞」手機或積分卡的會員二維碼，開啟投放口。</p></li><li><h3>只投入廚餘</h3><p>投入可接收的食物，帶走容器和膠袋；過硬、過大的骨頭或殼不要放入。</p><figure class="howto-poster"><img src="assets/food-waste-collection-kowloon-west.jpg" width="1286" height="967" loading="lazy" alt="廚餘收集服務海報：可回收生、熟、吃剩或變壞的食物；不接受過多水分及非廚餘物質。"><figcaption>環境保護署廚餘收集服務海報</figcaption></figure></li><li><h3>確認完成</h3><p>待桶蓋關閉並完成記錄，保持投放位置整潔。以現場指示為準。</p></li></ol><figure class="howto-video"><iframe src="https://www.youtube.com/embed/mhPUyFO-pEg" title="智能廚餘機簡易使用攻略" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><figcaption>智能廚餘機簡易使用攻略（CFSC Green） · <a href="https://youtu.be/mhPUyFO-pEg" target="_blank" rel="noreferrer">在 YouTube 觀看</a></figcaption></figure><div class="sorting-guide"><div><h3>可以先分類</h3><p>剩飯、麵、蔬果、肉類及其他可接收食物。生熟食物均可能屬可回收廚餘，按機身標示分類。</p></div><div><h3>記得帶走</h3><p>膠袋、餐盒、紙巾、餐具及包裝。不要把容器連同廚餘一起倒入。</p></div></div><p class="small source">參考：<a href="https://www.news.gov.hk/chi/2023/07/20230707/20230707_145204_382.html" target="_blank" rel="noreferrer">政府新聞網「智回收 惜廚餘」</a>及<a href="https://www.wastereduction.gov.hk/zh-hk/pilot-programme-smart-recycling-systems" target="_blank" rel="noreferrer">香港減廢網站智能回收系統</a>。接收種類與積分安排以現行機身說明為準。</p></section>
 
