@@ -1,0 +1,36 @@
+{
+  "synchronized_at": "2026-11-04T14:33:50+00:00",
+  "annual_recovery": {
+    "source_url": "https://www.censtatd.gov.hk/tc/web_table.html?id=950-92053",
+    "api_url": "https://www.censtatd.gov.hk/api/get.php?id=950-92053&lang=tc&param=N4KABGBEDGBukC4yghSBhA8gWUWA2uKmgA4CGJkANEcZCQDZkDO1tqkA7gPZvFoAzAKYAnEQH0AtgBcGffpAB244WKmz5dAOZNmrGvyjSh0gJZyDCkxNHdFmjgM4O0AT2eW63aQAtxIoWhuWFEhABNIdgBdIgBfS0hmeCQUDgAlbABlAHU8QkNINLJOcQBpcWlle2i4hJJRU24IlPZE6TIRaTxIACYABh6ARkiIeKJIU2aoAE4AVj6AWmn+2YBmeUgmRS1u6WhI2KA",
+    "scope": "全港都市固體廢物回收的廚餘；包括本地及香港以外循環再造",
+    "unit": "千公噸，官方 API 以整數呈現",
+    "frequency": "年度",
+    "rows": [
+      {
+        "year": 2021,
+        "thousand_tonnes": 66.0
+      },
+      {
+        "year": 2022,
+        "thousand_tonnes": 72.0
+      },
+      {
+        "year": 2023,
+        "thousand_tonnes": 79.0
+      },
+      {
+        "year": 2024,
+        "thousand_tonnes": 105.0
+      }
+    ]
+  },
+  "recycling_network": {
+    "source_url": "https://www.wastereduction.gov.hk/zh-hk/waste-reduction-programme/food-waste-recycling-schemes",
+    "statistics_date": null,
+    "date_note": "原網頁未標示統計日期；synchronized_at 僅代表本次讀取時間",
+    "frequency": "不定期更新",
+    "refuse_collection_points": 110,
+    "recycling_spots": 106
+  }
+}

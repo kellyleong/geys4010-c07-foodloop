@@ -64,3 +64,4 @@ window.initFoodGame?.();
 
 window.initTrackerExplorer?.();
 window.initSiteMotion?.();
+window.initOfficialFoodData?.();
