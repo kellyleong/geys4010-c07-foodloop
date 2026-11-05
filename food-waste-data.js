@@ -37,7 +37,7 @@ window.initOfficialFoodData = () => {
       const synchronized = new Date(data.synchronized_at);
       const date = new Intl.DateTimeFormat('zh-HK', { timeZone: 'Asia/Hong_Kong', year: 'numeric', month: '2-digit', day: '2-digit' }).format(synchronized);
       const time = new Intl.DateTimeFormat('zh-HK', { timeZone: 'Asia/Hong_Kong', hour: '2-digit', minute: '2-digit', hour12: false }).format(synchronized);
-      status.textContent = `最近成功同步：${date} ${time}（香港時間）｜年度數據至 ${mostRecent.year} 年`;
+      status.textContent = `最近成功同步：${date} ${time}（香港時間）`;
     } catch {
       status.textContent = '同步紀錄暫時無法讀取；保留目前畫面的資料，請按各項標示日期及官方來源核對。';
     } finally {
